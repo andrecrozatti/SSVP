@@ -8,7 +8,7 @@ exports.up = function (knex) {
         table.text('name').notNullable();
         table.integer('quantity').notNullable();
         table.integer('movement_id').unsigned();
-        table.foreign('movement_id').references('id').inTable('movements');
+        table.foreign('movement_id').references('id').inTable('movements').onDelete('CASCADE');;
 
     });
 };

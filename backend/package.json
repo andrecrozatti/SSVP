@@ -23,7 +23,7 @@
     "dev": "nodemon src/shared/infra/app.js",
     "create:table": "knex migrate:make",
     "run:table": "knex migrate:latest",
-    "run:table2": "knex migrate:up",
+    "run:table2": "knex migrate:up --knexfile=src/database/connection.js",
     "run:seed": "knex seed:run",
     "create:seed": "knex seed:make",
     "rollback:table": "knex migrate:rollback",

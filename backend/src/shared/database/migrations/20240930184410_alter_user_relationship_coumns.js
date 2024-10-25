@@ -7,8 +7,8 @@ exports.up = function(knex) {
     table.date('mandateDate').nullable();
     table.integer('conference_id').unsigned();
     table.integer('position_id').unsigned();
-    table.foreign('conference_id').references('id').inTable('conferences');
-    table.foreign('position_id').references('id').inTable('positions');
+    table.foreign('conference_id').references('id').inTable('conferences').onDelete('SET null');;
+    table.foreign('position_id').references('id').inTable('positions').onDelete('SET null');;
     
   });
 

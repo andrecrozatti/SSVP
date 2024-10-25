@@ -1,3 +1,6 @@
+
+
+//https://materialui.co/icon icons menu
 export const menu = [
   {
     title: 'home',
@@ -56,6 +59,18 @@ export const menu = [
         label: 'Encontrar',
         icon: 'user',
         path: '/movementsView',
+      },
+    ],
+  },
+
+  {
+    title: 'Visitas',
+    icon: 'volunteer_activism',
+    items: [
+      {
+        label: 'Encontrar',
+        icon: 'user',
+        path: '/visitsView',
       },
     ],
   },

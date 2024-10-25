@@ -21,6 +21,8 @@ import { MovementsAddEdit } from '../pages/movements/addMovementsEdit';
 import { MovementsPage } from '../pages/movements/movementsPage';
 import { PositionsPage } from '../pages/positions/positionsPage';
 import { PositionAddEdit } from '../pages/positions/positionsAddEdit';
+import { VisitsAddEdit } from '../pages/visits/addVisitsEdit';
+import { VisitsPage } from '../pages/visits/visitsPage';
 
 export const PrivateRoutes: React.FC = () => {
   const { setDrawerOptions } = useDrawer();
@@ -45,6 +47,9 @@ export const PrivateRoutes: React.FC = () => {
         <Route path="/movements" element={<MovementsAddEdit />} />
         <Route path="/movements/:id" element={<MovementsAddEdit />} />
         <Route path="/movementsView" element={<MovementsPage />} />
+        <Route path="/visits" element={<VisitsAddEdit />} />
+        <Route path="/visits/:id" element={<VisitsAddEdit />} />
+        <Route path="/visitsView" element={<VisitsPage />} />
         <Route path="/users" element={<Users />} />
         <Route path="/usersView" element={<UsersPage />} />
         <Route path="/users/:id" element={<Users />} />

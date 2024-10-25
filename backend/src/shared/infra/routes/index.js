@@ -30,7 +30,9 @@ const movementsRoutes = require('../../../modules/movements/infra/routes/movemen
 
 const helpingHandsRoutes = require('../../../modules/helping_hands/infra/routes/helpingHands.routes');
 
-// const ensureAuthenticated = require('../../../shared/middlewares/ensure.autenticated');
+const visitsRoutes = require('../../../modules/visits/infra/routes/visits.routes');
+
+const ensureAuthenticated = require('../../../shared/middlewares/ensure.autenticated');
 
 const routes = Router();
 
@@ -50,7 +52,7 @@ routes.use('/forgot_secretary', forgotSecretaryRoutes);
 
 routes.use('/reset_password_secretary', resetPasswordSecretaryRoutes);
 
-// routes.use(ensureAuthenticated);
+routes.use(ensureAuthenticated);
 
 routes.use('/assisteds', assistedsRoutes);
 
@@ -65,5 +67,7 @@ routes.use('/positions', positionsRoutes);
 routes.use('/movements', movementsRoutes);
 
 routes.use('/helping_hands', helpingHandsRoutes);
+
+routes.use('/visits', visitsRoutes);
 
 module.exports = routes;

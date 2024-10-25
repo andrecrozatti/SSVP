@@ -101,7 +101,7 @@ export const Users: React.FC = () => {
 
       navigate('/usersView');
     } catch (error: any) {
-      showMessage('Erro ao Deletar o Usúario', { severity: 'error' });
+      showMessage('Erro ao Deletar o Usúario'  + error, { severity: 'error' });
     }
   };
   const onSubmit: SubmitHandler<IUser> = async (data: IUser) => {

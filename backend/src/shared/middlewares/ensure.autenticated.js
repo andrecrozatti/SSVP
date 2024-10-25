@@ -7,9 +7,7 @@ module.exports = async (request, response, next) => {
 
     if (!authHeader) throw new AppError('Token not provided');
 
-    const token = authHeader;
-
-    console.log(token);
+    const { token }= JSON.parse(authHeader.split(" ")[1]);
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 

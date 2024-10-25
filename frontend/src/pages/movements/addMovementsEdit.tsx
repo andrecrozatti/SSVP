@@ -101,11 +101,11 @@ export const MovementsAddEdit: React.FC = () => {
   const handleDelete = (id: number) => {
     try {
       deleteMovements(id)
-      showMessage("Conferência deletada com sucesso!!", { severity:'success' })
+      showMessage("Movimentação deletada com sucesso!!", { severity:'success' })
       
       navigate('/movementsView')
     } catch (error: any) {
-      showMessage("Erro ao Deletar a Conferencia", { severity:'error' })
+      showMessage("Erro ao Deletar a movimentação", { severity:'error' })
      
     }
 
