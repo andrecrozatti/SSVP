@@ -20,7 +20,8 @@ interface VisitsView {
   user_id: number;
   conference_id: number;
   assisted_id: number;
-  movement_date: Date;
+  visit_date: string;
+  creation_date: string;
   user_name: string;
   conference_name: string;
   assisted_name: string;
@@ -40,6 +41,7 @@ export const ListVisits: React.FC<{ cadastros: VisitsView[] }> = ({
     navigate(`/visits/${id}`);
   };
 
+  debugger
   useEffect(() => {
     const filterVisitsViews = () => {
       let filtered = cadastros;
@@ -108,10 +110,12 @@ export const ListVisits: React.FC<{ cadastros: VisitsView[] }> = ({
                 sx={{ flexDirection: 'column', alignItems: 'flex-start' }}
                 onClick={() => handleListItemClick(cadastro.id)}
               >
+                
                 <ListItemText
                   primary={
                     <>
-                      <Typography color="primary.secondary">Data da Visita: {new Date(cadastro.movement_date).toLocaleDateString()}</Typography>
+                      <Typography color="primary.secondary">Data de Criação: {new Date(cadastro.creation_date).toISOString()}</Typography>
+                      <Typography color="primary.secondary">Data da Visita: {cadastro.visit_date}</Typography>
                       <Typography variant="h6" color="primary.main">
                         Conferêcia: {cadastro.conference_name}
                       </Typography>

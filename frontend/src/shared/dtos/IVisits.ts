@@ -1,5 +1,3 @@
-import { IAssisteds } from "./IAssisteds"
-import { IConferences } from "./IConferences"
 
 
 export interface IVisits {
@@ -8,8 +6,8 @@ export interface IVisits {
     visit_date: string,
     creation_date: string,
     visit_description: string,
-    assisted_id: Array<IAssisteds>
-    conference_id: Array<IConferences>
+    assisted_id: number
+    conference_id: number
     
 }
 

@@ -4,8 +4,6 @@
 export function StringDateToInput(date: string): String {
     return date.split('T')[0]
 }
-
-
 export function DateToInput(currentDate: Date) {
     
     // Função para adicionar zero à esquerda se o número for menor que 10
@@ -23,6 +21,8 @@ export function DateToInput(currentDate: Date) {
     // Formata no padrão necessário para o input datetime-local
      return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
+
+
 
 
 export default {StringDateToInput, DateToInput}

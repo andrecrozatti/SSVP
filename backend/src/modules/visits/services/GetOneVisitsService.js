@@ -11,9 +11,7 @@ class GetOneVisitsService {
     );
     if (!visit) throw new AppError('Visita não encontrada !!');
     
-
-    const preparedVisit = {...visit, creation_date: visit.creation_date.toISOString().split('.')[0], visit_date: visit.visit_date?.toISOString().split('.')[0] }
-    return preparedVisit;
+    return visit;
   }
 }
 module.exports = GetOneVisitsService;

@@ -3,7 +3,7 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { TextField, Grid, Box, Button, Typography, Select, FormControl, InputLabel, MenuItem, FormHelperText } from '@mui/material';
 import { IVisits } from '../../shared/dtos/IVisits';
 import { createVisits, getOneVisits, deleteVisits, updateVisits } from '../../api/visits';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { getAllAssisteds } from "../../api/assisteds";
@@ -36,7 +36,7 @@ export const VisitsAddEdit: React.FC = () => {
     defaultValues: {
       user_id: 1,
       creation_date: DateToInput(new Date()),
-      visit_description:''
+      visit_description: '',
     },
   });
 
@@ -48,26 +48,30 @@ export const VisitsAddEdit: React.FC = () => {
   }
 
 
-  const [assisteds, setAssisteds] = useState([])
+  const [assisteds, setAssisteds] = useState<IAssisteds[]>([]);
   const [conferences, setConferences] = useState([])
 
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const GetAssisteds = async () => {
-      setAssisteds(await getAllAssisteds())
-    };
-    const GetConferences = async () => {
-      setConferences(await getAllConferences())
-    };
-    const GetUsers = async () => {
-      setUsers(await getAllUsers())
+    const fetchInitialData = async () => {
+      try {
+        const [assistedsData, conferencesData, usersData] = await Promise.all([
+          getAllAssisteds(),
+          getAllConferences(),
+          getAllUsers()
+        ]);
+
+        setAssisteds(assistedsData);
+        setConferences(conferencesData);
+        setUsers(usersData);
+      } catch (err) {
+        console.error("Erro ao carregar dados iniciais", err);
+      }
     };
 
-    GetUsers()
-    GetAssisteds()
-    GetConferences()
-  }, [])
+    fetchInitialData();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,35 +101,37 @@ export const VisitsAddEdit: React.FC = () => {
 
 
 
-  const handleDelete = (id: number) => {
+  const handleDelete = useCallback(async (id: number) => {
     try {
-      deleteVisits(id)
-      showMessage("Visita deletada com sucesso!!", { severity: 'success' })
-
-      navigate('/visitsView')
+      await deleteVisits(id);
+      showMessage("Visita deletada com sucesso!!", { severity: 'success' });
+      navigate('/visitsView');
     } catch (error: any) {
-      showMessage("Erro ao Deletar a Visita", { severity: 'error' })
-
+      showMessage("Erro ao Deletar a Visita", { severity: 'error' });
     }
+  }, [navigate, showMessage]);
 
+  const assistedsOptions = useMemo(() => assisteds.map((item) => (
+    <MenuItem key={item.id} value={item.id}>
+      {item.name}
+    </MenuItem>
+  )), [assisteds]);
 
-  }
-
-
-  const onSubmit: SubmitHandler<IVisits> = async (data: IVisits) => {
+  const onSubmit: SubmitHandler<IVisits> = useCallback(async (data: IVisits) => {
     try {
       if (!id) {
         await createVisits(data);
         showMessage('Movimentação salva com sucesso!', { severity: 'success' });
       } else {
-        await updateVisits(data)
+        await updateVisits(data);
         showMessage('Movimentação atualizada com sucesso!', { severity: 'success' });
       }
-      navigate('/visitsView')
+      navigate('/visitsView');
     } catch (err) {
       console.error('Erro ao salvar a conferência!', err);
     }
-  };
+  }, [id, navigate, showMessage]);
+
 
   return (
     <Box
@@ -175,13 +181,7 @@ export const VisitsAddEdit: React.FC = () => {
                   value={field.value || ""}  // Assegura que o valor inicial seja uma string vazia caso não haja valor
                   label="Assistidos"
                 >
-                  {
-                    assisteds.map((item: IAssisteds, index) => {
-                      return (
-                        <MenuItem key={index} value={item.id}>{item.name}</MenuItem>
-                      )
-                    })
-                  }
+                  {assistedsOptions}
                 </Select>
                 <FormHelperText>
                   {errors.assisted_id ? 'Campo obrigatório' : ''}
@@ -229,7 +229,7 @@ export const VisitsAddEdit: React.FC = () => {
                 label="Descrição da Visita"
                 error={!!errors.visit_description}
                 helperText={errors.visit_description ? 'Verifique este campo' : ''}
-                // InputLabelProps={{ shrink: true }}
+              // InputLabelProps={{ shrink: true }}
               />
             )}
 

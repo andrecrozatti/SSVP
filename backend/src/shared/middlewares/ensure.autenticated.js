@@ -15,6 +15,7 @@ module.exports = async (request, response, next) => {
       id: decoded.id,
     };
 
+    
     return next();
   } catch (err) {
     return response.status(401).json({ error: err.message });
