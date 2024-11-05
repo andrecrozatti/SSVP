@@ -34,7 +34,6 @@ export const VisitsAddEdit: React.FC = () => {
     reset
   } = useForm<IVisits>({
     defaultValues: {
-      user_id: 1,
       creation_date: DateToInput(new Date()),
       visit_description: '',
     },

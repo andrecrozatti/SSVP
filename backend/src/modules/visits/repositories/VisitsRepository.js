@@ -1,6 +1,12 @@
 const connection = require('../../../shared/database/connection');
 
+const { getUser, setUser } = require('../../../shared/contexts/requestContext');
+
+
+
 class VisitsRepository {
+
+  
   async createVisits(payload) {
    
      const [createdVisits] = await connection.transaction(async trx =>
@@ -25,12 +31,13 @@ class VisitsRepository {
     return connection('visits')
     .join('assisteds', 'assisteds.id', '=', 'visits.assisted_id')
     .join('conferences', 'conferences.id', '=', 'visits.conference_id')
-    .select('assisteds.name as assisted_name','conferences.name as conference_name', 'visits.*');;
+    .where({ user_id: getUser().id })
+    .select('assisteds.name as assisted_name','conferences.name as conference_name', 'visits.*');
   }
 
   async getOneVisits(idVisits) {
     return connection('visits')
-    .where('visits.id', '=', `${idVisits}`).first();
+    .where('visits.id', '=', `${idVisits}`).andWhere('visits.user_id', '=', `${getUser().id}`).first();
   }
 }
 

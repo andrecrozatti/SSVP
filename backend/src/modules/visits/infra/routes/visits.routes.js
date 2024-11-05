@@ -12,11 +12,11 @@ visitsRoutes.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      conference_id: Joi.number().required('Conferencia é obrigatória'),
+      conference_id: Joi.number().optional(),
       assisted_id: Joi.number().required('Assitido é obrigatório'),
       visit_description: Joi.string().required('A descrição da visita é obrigatória'),
       visit_date: Joi.date().optional(),
-      user_id: Joi.number(),
+      user_id: Joi.number().optional(),
     },
   }),
   visitsController.createVisits

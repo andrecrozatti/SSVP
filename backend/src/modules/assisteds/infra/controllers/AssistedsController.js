@@ -140,6 +140,7 @@ class AssistedsController {
   async getAllAssisteds(request, response) {
     const getAll = new GetAllAssistedsService(assistedsRepository);
 
+    const {id} = request.user
     const assisteds = await getAll.execute();
     const getAllDependentsAssisted = new GetAllDependentsService(dependentsRepository)
 

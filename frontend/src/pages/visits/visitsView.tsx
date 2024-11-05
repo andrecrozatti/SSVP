@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
+import { StringDateToShow } from '../../shared/utils/formatDate';
 
 
 interface VisitsView {
@@ -41,7 +42,7 @@ export const ListVisits: React.FC<{ cadastros: VisitsView[] }> = ({
     navigate(`/visits/${id}`);
   };
 
-  debugger
+  
   useEffect(() => {
     const filterVisitsViews = () => {
       let filtered = cadastros;
@@ -114,7 +115,7 @@ export const ListVisits: React.FC<{ cadastros: VisitsView[] }> = ({
                 <ListItemText
                   primary={
                     <>
-                      <Typography color="primary.secondary">Data de Criação: {new Date(cadastro.creation_date).toISOString()}</Typography>
+                      <Typography color="primary.secondary">Data de Criação: {StringDateToShow(cadastro.creation_date)}</Typography>
                       <Typography color="primary.secondary">Data da Visita: {cadastro.visit_date}</Typography>
                       <Typography variant="h6" color="primary.main">
                         Conferêcia: {cadastro.conference_name}

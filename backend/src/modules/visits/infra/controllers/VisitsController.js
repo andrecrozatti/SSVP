@@ -22,10 +22,8 @@ class VisitsController {
   */
   async createVisits(request, response) {
     const {
-      conference_id,
       assisted_id,
       visit_description,
-      user_id,
       creation_date
     } = request.body; // Os valores que vieram do formulario são atribuidos para as variáveis acima
 
@@ -35,14 +33,12 @@ class VisitsController {
 
     //O trecho abaixo salva o assistido enviado para o backend e retorna para a const assisted, a linha salva no banco de dados já com seu respectivo ID
     const visit = await createVisit.execute({
-      conference_id,
+      conference_id: request.user.conference_id,
       assisted_id,
       visit_description,
       creation_date,
-      user_id
+      user_id : request.user.id
     });
-
-    
 
     return response.json(visit[0]);
   }
@@ -52,6 +48,8 @@ class VisitsController {
 
     const payload = {
       id,
+      user_id : request.user.id,
+      conference_id: request.user.conference_id,
       ...request.body,      
     };
 
