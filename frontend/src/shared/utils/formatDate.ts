@@ -22,8 +22,12 @@ export function DateToInput(currentDate: Date) {
      return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
-export function StringDateToShow(currentDate: string) {
+export function StringDateToShow(currentDate: string) : string | null {
     
+    if (!currentDate) {
+        return null;
+    }
+
     const formatedDate = new Date(currentDate)
     // Função para adicionar zero à esquerda se o número for menor que 10
     const pad = (number: number) => {

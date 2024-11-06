@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
+import { StringDateToShow } from '../../shared/utils/formatDate';
 
 
 interface MovimentsView {
@@ -20,7 +21,7 @@ interface MovimentsView {
   user_id: number;
   conference_id: number;
   assisted_id: number;
-  movement_date: Date;
+  movement_date: string;
   user_name: string;
   conference_name: string;
   assisted_name: string;
@@ -111,7 +112,7 @@ export const ListMovements: React.FC<{ cadastros: MovimentsView[] }> = ({
                 <ListItemText
                   primary={
                     <>
-                      <Typography color="primary.secondary">Data da Movimentação: {new Date(cadastro.movement_date).toLocaleDateString()}</Typography>
+                      <Typography color="primary.secondary">Data da Movimentação: {StringDateToShow(cadastro.movement_date)}</Typography>
                       <Typography variant="h6" color="primary.main">
                         Conferêcia: {cadastro.conference_name}
                       </Typography>

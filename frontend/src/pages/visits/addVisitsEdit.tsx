@@ -81,7 +81,8 @@ export const VisitsAddEdit: React.FC = () => {
 
         if (response?.data) {
           response.data.creation_date = DateToInput(new Date(response.data.creation_date))
-          response.data.visit_date = DateToInput(new Date(response.data.visit_date))
+
+          response.data.visit_date = response.data.visit_date ? DateToInput(new Date(response.data.visit_date)) : null;
 
           reset(response.data);
         }

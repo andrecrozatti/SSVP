@@ -62,7 +62,6 @@ export const menu = [
       },
     ],
   },
-
   {
     title: 'Visitas',
     icon: 'volunteer_activism',
@@ -71,6 +70,17 @@ export const menu = [
         label: 'Encontrar',
         icon: 'user',
         path: '/visitsView',
+      },
+    ],
+  },
+  {
+    title: 'Relatórios',
+    icon: 'list_alt',
+    items: [
+      {
+        label: 'Rel. Assistidos',
+        icon: 'user',
+        path: '/reports/assisteds',
       },
     ],
   },
