@@ -1,3 +1,4 @@
+const { getUser } = require('../../../shared/contexts/requestContext');
 const connection = require('../../../shared/database/connection');
 
 class AssistedsRepository {
@@ -22,12 +23,12 @@ class AssistedsRepository {
   }
 
   async getAllAssisteds() {
-    return connection('assisteds');
+    return connection('assisteds').where({ conference_id: getUser().conference_id });
   }
 
   async getOneAssisteds(idAssisteds) {
     return connection('assisteds')
-    .where('id', '=', `${idAssisteds}`).first();
+    .where('id', '=', `${idAssisteds}`).andWhere('conference_id', '=', `${getUser().conference_id}`).first();
   }
 }
 

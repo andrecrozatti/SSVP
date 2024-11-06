@@ -73,7 +73,7 @@ class AssistedsController {
       Spouse,
       maritalStatus,
       home,
-      conference_id,
+      conference_id: request.user.conference_id,
       status
     });
 
@@ -140,7 +140,7 @@ class AssistedsController {
   async getAllAssisteds(request, response) {
     const getAll = new GetAllAssistedsService(assistedsRepository);
 
-    const {id} = request.user
+    const { id } = request.user
     const assisteds = await getAll.execute();
     const getAllDependentsAssisted = new GetAllDependentsService(dependentsRepository)
 

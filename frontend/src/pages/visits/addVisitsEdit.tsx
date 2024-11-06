@@ -80,6 +80,8 @@ export const VisitsAddEdit: React.FC = () => {
         const response = await getOneVisits(Number(id));
 
         if (response?.data) {
+          response.data.creation_date = DateToInput(new Date(response.data.creation_date))
+          response.data.visit_date = DateToInput(new Date(response.data.visit_date))
 
           reset(response.data);
         }
@@ -140,11 +142,11 @@ export const VisitsAddEdit: React.FC = () => {
       style={{ marginTop: '10vh' }}
     >
       <Typography variant="h6" gutterBottom>
-        Cadastro Movimentações
+        Cadastro da Visita
       </Typography>
 
       <Grid container spacing={2}>
-        <Grid item xs={2}>
+        <Grid item xs={6} sm={6}>
 
           <Controller
             name="creation_date"
@@ -165,7 +167,7 @@ export const VisitsAddEdit: React.FC = () => {
           />
 
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={6} sm={6}>
 
 
           <Controller
@@ -192,7 +194,7 @@ export const VisitsAddEdit: React.FC = () => {
 
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={4} sm={4}>
 
           <UsersSelect
             control={control}
@@ -204,7 +206,7 @@ export const VisitsAddEdit: React.FC = () => {
 
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={4} sm={4}>
           <ConferencesSelect
             control={control}
             name="conference_id"
@@ -214,6 +216,26 @@ export const VisitsAddEdit: React.FC = () => {
           />
         </Grid>
 
+        <Grid item xs={4}>
+
+          <Controller
+            name="visit_date"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                fullWidth
+                {...field}
+                label="Data da Visita"
+                type="datetime-local"
+                error={!!errors.visit_date}
+                helperText={errors.visit_date ? 'Verifique este campo' : ''}
+                InputLabelProps={{ shrink: true }}
+              />
+            )}
+
+          />
+
+        </Grid>
 
         <Grid item xs={12} sm={12}>
           <Controller

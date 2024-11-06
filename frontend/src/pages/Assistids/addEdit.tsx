@@ -178,7 +178,7 @@ export const AssistidsAddEdit: React.FC = () => {
       </Typography>
 
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={8} sm={6}>
           <Controller
             name="name"
             control={control}
@@ -196,7 +196,7 @@ export const AssistidsAddEdit: React.FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={4} sm={6}>
           <Controller
             name="cpf"
             control={control}
@@ -214,7 +214,7 @@ export const AssistidsAddEdit: React.FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={3} sm={6}>
           <Controller
             name="age"
             control={control}
@@ -232,7 +232,7 @@ export const AssistidsAddEdit: React.FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={9} sm={6}>
           <Controller
             name="profession"
             control={control}
@@ -252,7 +252,7 @@ export const AssistidsAddEdit: React.FC = () => {
 
         <AddressFields control={control} errors={errors} setValue={setValue} />
 
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={6} sm={3}>
           <ConferencesSelect
             control={control}
             name="conference_id"
@@ -262,7 +262,7 @@ export const AssistidsAddEdit: React.FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={6} sm={3}>
           <Controller
             name="maritalStatus"
             control={control}
@@ -290,7 +290,7 @@ export const AssistidsAddEdit: React.FC = () => {
             rules={{ required: true }}
           />
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={6} sm={3}>
           <Controller
             name="status"
             control={control}
@@ -320,7 +320,7 @@ export const AssistidsAddEdit: React.FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={6} sm={3}>
           <Controller
             name="home"
             control={control}
@@ -347,7 +347,7 @@ export const AssistidsAddEdit: React.FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={6} sm={4}>
           <Controller
             name="family_income"
             control={control}
@@ -368,7 +368,7 @@ export const AssistidsAddEdit: React.FC = () => {
             rules={{ required: true }}
           />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={6} sm={4}>
           <Typography>
             Renda Per Capita
           </Typography>
@@ -398,7 +398,7 @@ export const AssistidsAddEdit: React.FC = () => {
                 //rules={{ required: true }}
                 />
               </Grid>
-              <Grid item xs={12} sm={3}>
+              <Grid item xs={3} sm={3}>
                 <Controller
                   name={`dependents.${index}.name`}
                   control={control}
@@ -416,10 +416,10 @@ export const AssistidsAddEdit: React.FC = () => {
                       }
                     />
                   )}
-                //rules={{ required: true }}
+                rules={{ required: true }}
                 />
               </Grid>
-              <Grid item xs={12} sm={3}>
+              <Grid item xs={3} sm={3}>
                 <Controller
                   name={`dependents.${index}.birth_date`}
                   control={control}
@@ -438,7 +438,7 @@ export const AssistidsAddEdit: React.FC = () => {
                 //rules={{ required: true }}
                 />
               </Grid>
-              <Grid item xs={12} sm={3}>
+              <Grid item xs={3} sm={3}>
                 <Controller
                   name={`dependents.${index}.CPF`}
                   control={control}
@@ -457,7 +457,7 @@ export const AssistidsAddEdit: React.FC = () => {
                 //rules={{ required: true }}
                 />
               </Grid>
-              <Grid item xs={12} sm={2}>
+              <Grid item xs={2} sm={2}>
                 <Controller
                   name={`dependents.${index}.relationship`}
                   control={control}
@@ -479,7 +479,7 @@ export const AssistidsAddEdit: React.FC = () => {
                 />
               </Grid>
               <Grid item xs={1} sm={1} alignSelf={"center"}>
-                <Button type='button' variant='contained' color='error' onClick={() => { remove(index) }}>X</Button>
+                <IconButton type='button' size='small' color='error' onClick={() => { remove(index) }}>X</IconButton>
               </Grid>
             </Grid>
           ))}

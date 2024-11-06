@@ -24,7 +24,8 @@ class VisitsController {
     const {
       assisted_id,
       visit_description,
-      creation_date
+      creation_date,
+      visit_date
     } = request.body; // Os valores que vieram do formulario são atribuidos para as variáveis acima
 
     //Como vou salvar dados em duas tabelas diferentes(visits e visit_items) é preciso iniciar 2 serviços e 2 repositórios diferentes
@@ -37,6 +38,7 @@ class VisitsController {
       assisted_id,
       visit_description,
       creation_date,
+      visit_date,
       user_id : request.user.id
     });
 

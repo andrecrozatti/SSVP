@@ -116,7 +116,7 @@ export const ListVisits: React.FC<{ cadastros: VisitsView[] }> = ({
                   primary={
                     <>
                       <Typography color="primary.secondary">Data de Criação: {StringDateToShow(cadastro.creation_date)}</Typography>
-                      <Typography color="primary.secondary">Data da Visita: {cadastro.visit_date}</Typography>
+                      <Typography color="primary.secondary">Data da Visita: {StringDateToShow(cadastro.visit_date)}</Typography>
                       <Typography variant="h6" color="primary.main">
                         Conferêcia: {cadastro.conference_name}
                       </Typography>

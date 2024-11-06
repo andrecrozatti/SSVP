@@ -65,7 +65,7 @@ const AddressFields: React.FC<AddressFieldsProps> = ({ control, errors, setValue
           rules={{ required: true }}
         />
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={10} sm={6}>
         <Controller
           name="address"
           control={control}
@@ -83,7 +83,7 @@ const AddressFields: React.FC<AddressFieldsProps> = ({ control, errors, setValue
         />
       </Grid>
 
-      <Grid item xs={1} sm={1}>
+      <Grid item xs={2} sm={1}>
         <Controller
           name="address_number"
           control={control}
@@ -102,7 +102,7 @@ const AddressFields: React.FC<AddressFieldsProps> = ({ control, errors, setValue
         />
       </Grid>
 
-      <Grid item xs={12} sm={2}>
+      <Grid item xs={6} sm={2}>
         <Controller
           name="neighborhood"
           control={control}
@@ -120,9 +120,7 @@ const AddressFields: React.FC<AddressFieldsProps> = ({ control, errors, setValue
         />
       </Grid>
 
-
-
-      <Grid item xs={12} sm={3}>
+      <Grid item xs={6} sm={3}>
         <Controller
           name="address_complement"
           control={control}
@@ -139,7 +137,7 @@ const AddressFields: React.FC<AddressFieldsProps> = ({ control, errors, setValue
         />
       </Grid>
 
-      <Grid item xs={12} sm={3}>
+      <Grid item xs={6} sm={3}>
         <Controller
           name="city"
           control={control}
@@ -156,7 +154,7 @@ const AddressFields: React.FC<AddressFieldsProps> = ({ control, errors, setValue
         />
       </Grid>
 
-      <Grid item xs={12} sm={3}>
+      <Grid item xs={3} sm={3}>
         <Controller
           name="state"
           control={control}
@@ -173,7 +171,7 @@ const AddressFields: React.FC<AddressFieldsProps> = ({ control, errors, setValue
         />
       </Grid>
 
-      <Grid item xs={12} sm={3}>
+      <Grid item xs={3} sm={3}>
         <Controller
           name="country"
           control={control}

@@ -32,7 +32,7 @@ assistedsRoutes.post(
       home: Joi.string(),
       maritalStatus: Joi.string(),
       dependents: Joi.array().empty(),
-      conference_id: Joi.number(),
+      conference_id: Joi.number().optional(),
       status: Joi.string().required('Status do assistido é obrigatório'),
       
     },
