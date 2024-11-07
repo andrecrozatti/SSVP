@@ -91,7 +91,7 @@ export const menu = [
       {
         label: 'Ajustes',
         icon: 'display_settings',
-        path: '/configs',
+        path: '/config',
       },
     ],
   },

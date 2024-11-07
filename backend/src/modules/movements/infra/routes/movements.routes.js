@@ -12,10 +12,10 @@ movementsRoutes.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      conference_id: Joi.number().required('Conferencia é obrigatória'),
+      conference_id: Joi.number().optional(),
       assisted_id: Joi.number().required('Assitido é obrigatório'),
       movement_date: Joi.date().required('A data da movimentação é obrigatória'),
-      user_id: Joi.number(),
+      user_id: Joi.number().optional(),
       movement_items: Joi.array()
     },
   }),

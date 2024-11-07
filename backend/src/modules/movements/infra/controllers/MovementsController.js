@@ -38,10 +38,10 @@ class MovementsController {
 
     //O trecho abaixo salva o assistido enviado para o backend e retorna para a const assisted, a linha salva no banco de dados já com seu respectivo ID
     const movement = await createMovement.execute({
-      conference_id,
+      conference_id: request.user.conference_id,
       assisted_id,
       movement_date,
-      user_id
+      user_id: request.user.id,
     });
 
     if (movement_items.length > 0) {

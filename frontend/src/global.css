@@ -4,6 +4,29 @@
   box-sizing: border-box;
 }
 
+@media print {
+  body {
+    -webkit-print-color-adjust: exact; /* Permite imprimir cores exatas em navegadores WebKit */
+    print-color-adjust: exact; /* Mantém as cores definidas no tema */
+  }
+
+  /* Oculta todos os elementos que não são a tabela */
+  body * {
+    visibility: hidden;
+  }
+  #printable-area, #printable-area * {
+    visibility: visible;
+  }
+  #printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+
+
 body {
   -webkit-font-smoothing: antialiased;
 }

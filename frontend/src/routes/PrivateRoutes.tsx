@@ -23,8 +23,9 @@ import { PositionsPage } from '../pages/positions/positionsPage';
 import { PositionAddEdit } from '../pages/positions/positionsAddEdit';
 import { VisitsAddEdit } from '../pages/visits/addVisitsEdit';
 import { VisitsPage } from '../pages/visits/visitsPage';
-import { AssistedsReport } from '../pages/reports/AssistedsReport';
+import {AssistedsReport}  from '../pages/reports/AssistedsReport';
 import { BaseReportPage } from '../pages/reports/BaseReportPage';
+import Config from '../pages/config/config';
 
 export const PrivateRoutes: React.FC = () => {
   const { setDrawerOptions } = useDrawer();
@@ -56,6 +57,7 @@ export const PrivateRoutes: React.FC = () => {
         <Route path="/usersView" element={<UsersPage />} />
         <Route path="/users/:id" element={<Users />} />
         <Route path="/helping_hands" element={<HelpingHandsAddEdit />} />
+        <Route path="/config" element={<Config />} />
         <Route path="/reports/assisteds" 
           element={
             <BaseReportPage>

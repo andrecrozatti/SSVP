@@ -4,7 +4,7 @@ const forgotPassword = (name, token) => {
     `<br/>` +
     ` <p> Vimos que você esqueceu sue senha, utilize o token: ${token} para resetar a senha </p> ` +
     `<br/>` +
-    `<strong>Equipe Ally</strong>`
+    `<strong>Equipe SSVP Digital</strong>`
   );
 };
 

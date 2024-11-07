@@ -36,7 +36,7 @@ class ForgotPasswordUsersService {
       subject: 'Esqueci minha senha [Ally]',
       template: message,
     });
-    return forgot;
+    return forgot[0];
   }
 }
 

@@ -23,6 +23,7 @@ import * as zod from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputText } from '../../shared/components/hook-form/input-text';
 import { resetPassword } from '../../api/api';
+import { useSnackbar } from '../../shared/hooks/SnackbarProvider';
 
 interface IData {
   password: string;
@@ -43,6 +44,7 @@ const defaultTheme = createTheme();
 export const ResetPassword: React.FC = () => {
   const navigate = useNavigate();
   const { token = '' } = useParams<'token'>();
+  const { showMessage } = useSnackbar();
 
   if (!token) {
     navigate('/');
@@ -66,8 +68,11 @@ export const ResetPassword: React.FC = () => {
 
         await resetPassword({ token, password: data.password });
 
+        showMessage("Senha atualizada com sucesso!", { severity: 'success' });
         navigate('/');
       } catch (err: any) {
+
+        showMessage("Erro ao atualizar a senha!", { severity: 'error' });
       } finally {
         setLoading(false);
       }

@@ -131,11 +131,19 @@ export const SignIn: React.FC = () => {
               Entrar
             </Button>
             <Grid container>
-              <Grid item>
+              <Grid item xs={12}>
                 <Link href="/sign-up" variant="body2">
                   {'Você não tem uma conta? Cadastrar '}
                 </Link>
+
               </Grid>
+
+              <Grid item xs={12}>
+                <Link href="/forgot-password" variant="body2">
+                  {'Esqueceu a senha?'}
+                </Link>
+              </Grid>
+              
             </Grid>
           </form>
         </Box>

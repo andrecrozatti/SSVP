@@ -21,6 +21,7 @@ import * as zod from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputText } from '../../shared/components/hook-form/input-text';
 import { forgotPassword } from '../../api/api';
+import { useSnackbar } from '../../shared/hooks/SnackbarProvider';
 
 const forgotPasswordValidationSchema = zod.object({
   email: zod.string().email('Digite um email válido'),
@@ -33,7 +34,7 @@ type ForgotPasswordFormType = zod.infer<typeof forgotPasswordValidationSchema>;
 export const ForgotPassword: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const timeToBack = useRef<ReturnType<typeof setTimeout>>();
+  const { showMessage } = useSnackbar()
 
   const methods = useForm<ForgotPasswordFormType>({
     resolver: zodResolver(forgotPasswordValidationSchema),
@@ -49,15 +50,13 @@ export const ForgotPassword: React.FC = () => {
       try {
         setLoading(true);
 
-        await forgotPassword(data.email);
+        const { token } = await forgotPassword(data.email);
+        showMessage("Token enviado com sucesso!", { severity: 'success'});
 
-        if (timeToBack.current) {
-          clearTimeout(timeToBack.current);
-        }
-        timeToBack.current = setTimeout(() => {
-          navigate('/');
-        }, 2000);
+        navigate(`/reset-password/${token}`);
+
       } catch (err: any) {
+        showMessage("Erro ao enviar o token!", { severity: 'error' });
       } finally {
         setLoading(false);
       }
