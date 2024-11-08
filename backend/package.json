@@ -19,18 +19,12 @@
   "devDependencies": {
     "nodemon": "^3.1.4"
   },
-
-  
   "scripts": {
     "dev": "nodemon src/shared/infra/app.js",
-
-   
     "create:table": "knex migrate:make",
     "run:table": "knex migrate:latest",
-    
     "run:table2": "knex migrate:up ",
-    "rollback:table2": "knex migrate:down " ,
-
+    "rollback:table2": "knex migrate:down ",
     "run:seed": "knex seed:run",
     "create:seed": "knex seed:make",
     "rollback:table": "knex migrate:rollback",

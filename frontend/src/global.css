@@ -8,6 +8,11 @@
   body {
     -webkit-print-color-adjust: exact; /* Permite imprimir cores exatas em navegadores WebKit */
     print-color-adjust: exact; /* Mantém as cores definidas no tema */
+    html, body {
+      width: 210mm;
+      height: 297mm ;
+    };
+    
   }
 
   /* Oculta todos os elementos que não são a tabela */
@@ -16,12 +21,14 @@
   }
   #printable-area, #printable-area * {
     visibility: visible;
+    
   }
   #printable-area {
-    position: absolute;
+    /* position: absolute;
     left: 0;
-    top: 0;
+    top: 0; */
     width: 100%;
+    
   }
 }
 

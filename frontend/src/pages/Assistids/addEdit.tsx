@@ -5,6 +5,8 @@ import {
   useFieldArray,
   SubmitHandler,
 } from 'react-hook-form';
+
+import InputMask from 'react-input-mask';
 import {
   TextField,
   Grid,
@@ -200,17 +202,22 @@ export const AssistidsAddEdit: React.FC = () => {
           <Controller
             name="cpf"
             control={control}
+            defaultValue=""
             render={({ field }) => (
-              <TextField
-                {...field}
-                variant="standard"
-                label="CPF"
-                fullWidth
-                error={!!errors.cpf}
-                helperText={errors.cpf ? 'Campo obrigatório' : ''}
-              />
+              <InputMask
+                mask="999.999.999-99"
+                value={field.value}
+                onChange={field.onChange}
+              >
+                <TextField
+                  label="CPF"
+                  variant="outlined"
+                  fullWidth
+                  error={!!errors.cpf}
+                  helperText={errors.cpf ? errors.cpf.message : ''}
+                />
+              </InputMask>
             )}
-            rules={{ required: true }}
           />
         </Grid>
 
@@ -362,7 +369,7 @@ export const AssistidsAddEdit: React.FC = () => {
                 error={!!errors.family_income}
                 helperText={errors.family_income ? 'Campo obrigatório' : ''}
                 InputProps={{ startAdornment: <InputAdornment position="start">R$</InputAdornment> }}
-                
+
               />
             )}
             rules={{ required: true }}
@@ -416,7 +423,7 @@ export const AssistidsAddEdit: React.FC = () => {
                       }
                     />
                   )}
-                rules={{ required: true }}
+                  rules={{ required: true }}
                 />
               </Grid>
               <Grid item xs={3} sm={3}>
