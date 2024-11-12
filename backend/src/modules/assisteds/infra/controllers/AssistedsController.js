@@ -28,7 +28,7 @@ class AssistedsController {
     const {
       name,
       age,
-      whatsapp,
+      phone,
       profession,
       address,
       address_number,
@@ -58,7 +58,7 @@ class AssistedsController {
     const assisted = await createAssisted.execute({
       name,
       age,
-      whatsapp: "",
+      phone,
       profession,
       address,
       address_number,
@@ -72,7 +72,7 @@ class AssistedsController {
       Case_report,
       family_income,
       explain,
-      Spouse,
+
       maritalStatus,
       home,
       conference_id: request.user.conference_id,

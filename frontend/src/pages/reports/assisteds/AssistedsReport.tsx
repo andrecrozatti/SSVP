@@ -22,7 +22,7 @@ export const AssistedsReport = React.forwardRef<HTMLInputElement, PrintableRepor
       >
       </PrintHeader>
       <TableContainer component={Paper}>
-        <Table>
+        <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
@@ -39,7 +39,7 @@ export const AssistedsReport = React.forwardRef<HTMLInputElement, PrintableRepor
                   <TableCell>{record.id}</TableCell>
                   <TableCell>{record.name}</TableCell>
                   <TableCell>{record.neighborhood}</TableCell>
-                  <TableCell>{record.whatsapp}</TableCell>
+                  <TableCell>{record.phone}</TableCell>
                   <TableCell>{StringDateToShow(String(record.age))}</TableCell>
                 </TableRow>
               ))}

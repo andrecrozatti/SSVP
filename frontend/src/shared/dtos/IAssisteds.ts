@@ -2,7 +2,7 @@ export interface IAssisteds {
   id: number;
   name: string;
   age: string;
-  whatsapp: string;
+  phone: string;
   profession: string;
   address: string;
   address_number: string;
@@ -16,7 +16,6 @@ export interface IAssisteds {
   Case_report: string;
   family_income: string;
   explain: string;
-  Spouse: string;
   maritalStatus: string;
   home: string;
   conference_id: number ;

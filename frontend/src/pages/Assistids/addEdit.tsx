@@ -224,7 +224,35 @@ export const AssistidsAddEdit: React.FC = () => {
           />
         </Grid>
 
-        <Grid item xs={3} sm={6}>
+        <Grid item xs={3} sm={4}>
+          <Controller
+            name="phone"
+            control={control}
+            render={({ field }) => (
+
+              <InputMask
+                mask="(99) 99999-9999"
+                value={field.value}
+                onChange={field.onChange}
+              >
+                <TextField
+                  variant="standard"
+                  label="Celular"
+                  type="tel"
+                  fullWidth
+                  error={!!errors.phone}
+                  helperText={errors.phone ? 'Campo obrigatório' : ''}
+                  InputLabelProps={{ shrink: true }}
+                />
+              </InputMask>
+
+
+            )}
+            rules={{ required: true }}
+          />
+        </Grid>
+
+        <Grid item xs={3} sm={4}>
           <Controller
             name="age"
             control={control}
@@ -237,14 +265,14 @@ export const AssistidsAddEdit: React.FC = () => {
                 fullWidth
                 error={!!errors.age}
                 helperText={errors.age ? 'Campo obrigatório' : ''}
-                InputLabelProps={{shrink: true}}
+                InputLabelProps={{ shrink: true }}
               />
             )}
             rules={{ required: true }}
           />
         </Grid>
 
-        <Grid item xs={9} sm={6}>
+        <Grid item xs={9} sm={4}>
           <Controller
             name="profession"
             control={control}
