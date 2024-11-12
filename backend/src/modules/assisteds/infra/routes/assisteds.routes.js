@@ -62,6 +62,9 @@ assistedsRoutes.delete(
   assistedsController.deleteAssisteds
 );
 
+assistedsRoutes.get('/report/', assistedsController.getAssistedsReport);
+
+
 assistedsRoutes.get(
   '/:id',
   celebrate({
@@ -71,5 +74,6 @@ assistedsRoutes.get(
   }),
   assistedsController.getOneAssisteds
 );
+
 
 module.exports = assistedsRoutes;

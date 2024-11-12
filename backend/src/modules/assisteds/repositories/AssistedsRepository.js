@@ -30,6 +30,10 @@ class AssistedsRepository {
     return connection('assisteds')
     .where('id', '=', `${idAssisteds}`).andWhere('conference_id', '=', `${getUser().conference_id}`).first();
   }
+
+  async getAssistedsReport() {
+    return connection('assisteds').where({ conference_id: getUser().conference_id });
+  }
 }
 
 module.exports = AssistedsRepository;

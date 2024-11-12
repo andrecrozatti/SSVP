@@ -1,8 +1,8 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import * as React from "react";
 
-import PrintHeader from "./PrintHeader";
-import { IAssisteds } from "../../shared/dtos/IAssisteds";
+import PrintHeader from "../PrintHeader";
+import { IAssisteds } from "../../../shared/dtos/IAssisteds";
 
 interface PrintableReportProps {
   records: Partial<IAssisteds>[],
@@ -13,7 +13,6 @@ export const AssistedsReport = React.forwardRef<HTMLInputElement, PrintableRepor
     <div ref={ref} id="printable-area" style={{ padding: "10px", height:"297mm", border:"3px solid #3966BF" }}>
 
       <PrintHeader
-
         companyName="Sociedade São Vicente de Paulo"
         address="Rua Exemplo, 123 - Cidade, Estado"
         phone="(11) 1234-5678"

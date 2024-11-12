@@ -1,12 +1,13 @@
 import { api } from '../shared/services/api';
 
 import { IAssisteds } from '../shared/dtos/IAssisteds';
+import { IReport } from '../shared/dtos/IReport';
 
 
 
 const createAssisteds = async (data: IAssisteds) => {
   try {
-    const result = await api.post('/assisteds',  data );
+    const result = await api.post('/assisteds', data);
 
     return result.data;
   } catch (error: any) {
@@ -36,7 +37,7 @@ const deleteAssisteds = async (id: number) => {
 
 const getAllAssisteds = async () => {
   try {
-   
+
     const result = await api.get('/assisteds');
     return result.data;
   } catch (error: any) {
@@ -53,4 +54,16 @@ const getOneAssisteds = async (id: Number) => {
   }
 };
 
-export { createAssisteds, deleteAssisteds, updateAssisteds, getAllAssisteds, getOneAssisteds };
+
+const getAssistedsReport = async (filter: IReport) => {
+
+  try {
+    const params = new URLSearchParams({...filter});
+    const result = await api.get(`/assisteds/report`, {params: params});
+    return result.data;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export { createAssisteds, deleteAssisteds, updateAssisteds, getAllAssisteds, getOneAssisteds, getAssistedsReport };

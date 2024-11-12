@@ -23,8 +23,8 @@ import { PositionsPage } from '../pages/positions/positionsPage';
 import { PositionAddEdit } from '../pages/positions/positionsAddEdit';
 import { VisitsAddEdit } from '../pages/visits/addVisitsEdit';
 import { VisitsPage } from '../pages/visits/visitsPage';
-import {AssistedsReport}  from '../pages/reports/AssistedsReport';
-import { BaseReportPage } from '../pages/reports/BaseReportPage';
+import { AssistedsReport } from '../pages/reports/assisteds/AssistedsReport';
+import { AssistedsFilterPage } from '../pages/reports/assisteds/AssistedsFilterPage';
 import Config from '../pages/config/config';
 
 export const PrivateRoutes: React.FC = () => {
@@ -58,13 +58,7 @@ export const PrivateRoutes: React.FC = () => {
         <Route path="/users/:id" element={<Users />} />
         <Route path="/helping_hands" element={<HelpingHandsAddEdit />} />
         <Route path="/config" element={<Config />} />
-        <Route path="/reports/assisteds" 
-          element={
-            <BaseReportPage>
-              <AssistedsReport />
-            </BaseReportPage>
-          } 
-        />
+        <Route path="/reports/assisteds" element={<AssistedsFilterPage />} />
 
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>

@@ -44,10 +44,10 @@ const PrintHeader: React.FC<PrintHeaderProps> = ({
 
         {/* Linha das informações de contato */}
         <Box mt={1} textAlign={"right"}>
-          <Typography fontSize={10} >Data: {currentDate}</Typography>
-          <Typography fontSize={10}>Telefone: {phone} </Typography>
-          <Typography fontSize={10}>E-mail: {email}</Typography>
-          {additionalInfo && <Typography fontSize={10}>{additionalInfo}</Typography>}
+          <Typography fontSize={11} >Data: {currentDate}</Typography>
+          <Typography fontSize={11}>Telefone: {phone} </Typography>
+          <Typography fontSize={11}>E-mail: {email}</Typography>
+          {additionalInfo && <Typography fontSize={11}>{additionalInfo}</Typography>}
         </Box>
 
       </Box>
@@ -55,8 +55,8 @@ const PrintHeader: React.FC<PrintHeaderProps> = ({
       {/* Linha das informações de contato e data */}
       <Box textAlign="center"  >
         
-        <Typography fontSize={10} >{address}</Typography>
-        <Typography fontSize={10} >Telefone: {phone} | E-mail: {email} </Typography>
+        <Typography fontSize={12} >{address}</Typography>
+        <Typography fontSize={12} >Telefone: {phone} | E-mail: {email} </Typography>
         
       </Box>
 

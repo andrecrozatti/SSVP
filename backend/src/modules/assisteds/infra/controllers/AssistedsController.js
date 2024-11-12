@@ -9,6 +9,8 @@ const DeleteAssistedsService = require('../../services/DeleteAssistedsService');
 const GetOneAssistedsService = require('../../services/GetOneAssistedsService');
 
 const GetAllAssistedsService = require('../../services/GetAllAssistedsService');
+const GetAssistedsReportService = require('../../services/GetAssistedsReportService');
+
 const GetAllDependentsService = require('../../../dependents/services/GetAllDependentsService');
 
 const UpdateAssistedService = require('../../services/UpdateAssistedsService');
@@ -167,6 +169,27 @@ class AssistedsController {
     assisted.dependents = dependents
     return response.json(assisted);
   }
+
+
+  async getAssistedsReport(request, response) {
+    const getAll = new GetAssistedsReportService(assistedsRepository);
+
+    const { filterType, filterValue } = request.query
+
+
+    const assisteds = await getAll.execute();
+    const getAllDependentsAssisted = new GetAllDependentsService(dependentsRepository)
+
+
+    const assisteds_dependents = await Promise.all(assisteds.map(async (element, index) => {
+      const dependents = await getAllDependentsAssisted.execute(element.id)
+      return { ...element, dependents }
+    }))
+
+
+    return response.json(assisteds_dependents);
+  }
+
 }
 
 module.exports = AssistedsController;
