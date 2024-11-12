@@ -177,7 +177,7 @@ class AssistedsController {
     const { filterType, filterValue } = request.query
 
 
-    const assisteds = await getAll.execute();
+    const assisteds = await getAll.execute(filterType, filterValue);
     const getAllDependentsAssisted = new GetAllDependentsService(dependentsRepository)
 
 

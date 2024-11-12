@@ -3,6 +3,7 @@ import * as React from "react";
 
 import PrintHeader from "../PrintHeader";
 import { IAssisteds } from "../../../shared/dtos/IAssisteds";
+import { StringDateToShow } from "../../../shared/utils/formatDate";
 
 interface PrintableReportProps {
   records: Partial<IAssisteds>[],
@@ -26,8 +27,9 @@ export const AssistedsReport = React.forwardRef<HTMLInputElement, PrintableRepor
             <TableRow>
               <TableCell>ID</TableCell>
               <TableCell>Nome do Assistido</TableCell>
-              <TableCell>Renda</TableCell>
-              <TableCell>Idade</TableCell>
+              <TableCell>Bairro</TableCell>
+              <TableCell>Telefone</TableCell>
+              <TableCell>Data de Nascimento</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -36,8 +38,9 @@ export const AssistedsReport = React.forwardRef<HTMLInputElement, PrintableRepor
                 <TableRow key={record.id}>
                   <TableCell>{record.id}</TableCell>
                   <TableCell>{record.name}</TableCell>
-                  <TableCell>{record.family_income}</TableCell>
-                  <TableCell>{record.age}</TableCell>
+                  <TableCell>{record.neighborhood}</TableCell>
+                  <TableCell>{record.whatsapp}</TableCell>
+                  <TableCell>{StringDateToShow(String(record.age))}</TableCell>
                 </TableRow>
               ))}
           </TableBody>

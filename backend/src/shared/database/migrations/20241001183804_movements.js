@@ -10,7 +10,7 @@ exports.up = function (knex) {
         table.integer('user_id').unsigned();
         table.datetime('movement_date').notNullable();
         table.foreign('conference_id').references('id').inTable('conferences');
-        table.foreign('assisted_id').references('id').inTable('assisteds');
+        table.foreign('assisted_id').references('id').inTable('assisteds').onDelete('SET null');
         table.foreign('user_id').references('id').inTable('users');
         
 

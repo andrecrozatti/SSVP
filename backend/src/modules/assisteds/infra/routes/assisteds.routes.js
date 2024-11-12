@@ -13,7 +13,7 @@ assistedsRoutes.post(
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required('Name is required'),
-      age: Joi.number().required('Age is required'),
+      age: Joi.date().required('Idade é obrigatório'),
       address: Joi.string(),
       address_number: Joi.string(),
       neighborhood: Joi.string(),

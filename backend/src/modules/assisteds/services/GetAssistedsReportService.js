@@ -3,8 +3,10 @@ class GetAssistedsReportService {
     this.assistedsRepository = assistedsRepository;
   }
 
-  async execute() {
-    return this.assistedsRepository.getAssistedsReport();
+  async execute(filterType, filterValue) {
+
+
+    return this.assistedsRepository.getAssistedsReport(filterType, filterValue);
   }
 }
 

@@ -1,7 +1,7 @@
 export interface IAssisteds {
   id: number;
   name: string;
-  age: number;
+  age: string;
   whatsapp: string;
   profession: string;
   address: string;

@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
-import { StringDateToShow } from '../../shared/utils/formatDate';
+import { StringDateTimeToShow } from '../../shared/utils/formatDate';
 
 
 interface VisitsView {
@@ -115,8 +115,8 @@ export const ListVisits: React.FC<{ cadastros: VisitsView[] }> = ({
                 <ListItemText
                   primary={
                     <>
-                      <Typography color="primary.secondary">Data de Criação: {StringDateToShow(cadastro.creation_date)}</Typography>
-                      <Typography color="primary.secondary">Data da Visita: {StringDateToShow(cadastro.visit_date)}</Typography>
+                      <Typography color="primary.secondary">Data de Criação: {StringDateTimeToShow(cadastro.creation_date)}</Typography>
+                      <Typography color="primary.secondary">Data da Visita: {StringDateTimeToShow(cadastro.visit_date)}</Typography>
                       <Typography variant="h6" color="primary.main">
                         Conferêcia: {cadastro.conference_name}
                       </Typography>

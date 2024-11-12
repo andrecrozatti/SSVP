@@ -12,7 +12,7 @@ exports.up = function (knex) {
         table.datetime('creation_date').notNullable().defaultTo(knex.fn.now());
         table.datetime('visit_date').nullable();
         table.foreign('conference_id').references('id').inTable('conferences');
-        table.foreign('assisted_id').references('id').inTable('assisteds');
+        table.foreign('assisted_id').references('id').inTable('assisteds').onDelete('SET null');
         table.foreign('user_id').references('id').inTable('users');
 
     });

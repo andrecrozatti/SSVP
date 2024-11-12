@@ -9,12 +9,14 @@ import { IReport } from "../../../shared/dtos/IReport";
 import ConferencesSelect from "../../../shared/components/form-components/ConferencesSelect";
 import { getAllConferences } from "../../../api/conferences";
 import { getAssistedsReport } from "../../../api/assisteds";
+import { IAssisteds } from "../../../shared/dtos/IAssisteds";
 
 
 export const AssistedsFilterPage: React.FC = () => {
     const componentRef = React.useRef(null);
     const [conferences, setConferences] = useState([]);
-
+    const [assisteds, setAssisteds] = useState<IAssisteds[]>([]);
+    
     useEffect(() => {
         const loadConferences = async () => {
             setConferences(await getAllConferences());
@@ -69,7 +71,9 @@ export const AssistedsFilterPage: React.FC = () => {
 
     const onSubmit: SubmitHandler<IReport> = async data => {
         try {
-            await getAssistedsReport(data)
+
+            setAssisteds(await getAssistedsReport(data))
+            
         } catch (err) {
             console.error('Erro ao salvar o assistido', err);
         }
@@ -102,7 +106,7 @@ export const AssistedsFilterPage: React.FC = () => {
                                 >
                                     <MenuItem value="neighborhood">Bairro</MenuItem>
                                     <MenuItem value="conference">Conferência</MenuItem>
-                                    <MenuItem value="income">Renda</MenuItem>
+                                    <MenuItem value="name">Nome</MenuItem>
                                 </Select>
                             </FormControl>
 
@@ -139,7 +143,7 @@ export const AssistedsFilterPage: React.FC = () => {
                             errorMessage={errors.filterValue ? 'Campo obrigatório' : ''} // Mensagem de erro
                         />
                     )}
-                    {selectedFilterType === "income" && (
+                    {selectedFilterType === "name" && (
                         <Controller
                             name="filterValue"
                             control={control}
@@ -147,7 +151,7 @@ export const AssistedsFilterPage: React.FC = () => {
                                 <TextField
                                     {...field}
                                     variant="outlined"
-                                    label="Renda"
+                                    label="name"
                                     fullWidth
                                     error={!!errors.filterValue}
                                     helperText={errors.filterValue ? 'Campo obrigatório' : ''}
@@ -178,7 +182,7 @@ export const AssistedsFilterPage: React.FC = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <AssistedsReport records={[{ id: 1, name: "Andre", family_income: "1000", age: 12 }]} ref={componentRef} />
+                    <AssistedsReport records={assisteds} ref={componentRef} />
                 </Grid>
             </Grid>
         </Box>

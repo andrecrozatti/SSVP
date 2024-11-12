@@ -34,6 +34,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import AddressFields from '../../shared/components/form-components/AddressFields';
 import ConferencesSelect from '../../shared/components/form-components/ConferencesSelect';
 import { useSnackbar } from '../../shared/hooks/SnackbarProvider';
+import { StringDateToInput } from '../../shared/utils/formatDate';
 
 export const AssistidsAddEdit: React.FC = () => {
   const { id } = useParams();
@@ -83,6 +84,8 @@ export const AssistidsAddEdit: React.FC = () => {
       try {
         const response = await getOneAssisteds(Number(id));
         if (response?.data) {
+
+          response.data.age = StringDateToInput(response.data.age)
           reset(response.data);
         }
       } catch (err) {
@@ -229,10 +232,12 @@ export const AssistidsAddEdit: React.FC = () => {
               <TextField
                 {...field}
                 variant="standard"
-                label="Idade"
+                label="Data de Nascimento"
+                type="date"
                 fullWidth
                 error={!!errors.age}
                 helperText={errors.age ? 'Campo obrigatório' : ''}
+                InputLabelProps={{shrink: true}}
               />
             )}
             rules={{ required: true }}

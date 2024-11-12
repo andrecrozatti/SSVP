@@ -6,7 +6,7 @@ exports.up = function (knex) {
   return knex.schema.createTable('assisteds', table => {
     table.increments('id').primary();
     table.text('name').notNullable();
-    table.integer('age').notNullable();
+    table.date('age').notNullable();
     table.text('address').notNullable;
     table.text('address_number').notNullable;
     table.text('neighborhood').notNullable;
