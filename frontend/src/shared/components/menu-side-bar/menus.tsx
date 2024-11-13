@@ -23,7 +23,7 @@ type IProps = {
   handleDrawer: (value: boolean) => void | undefined
 }
 
-export const Menus: React.FC<IProps> = ({
+const Menus: React.FC<IProps> = ({
   title,
   icon,
   items,
@@ -64,3 +64,7 @@ export const Menus: React.FC<IProps> = ({
     </Fragment>
   )
 }
+
+
+export default Menus;
+
