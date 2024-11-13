@@ -27,7 +27,7 @@ import { useLocation } from 'react-router-dom';
 
 import logo from '../../../assets/ssvp.png';
 import { useAuth } from '../../hooks/auth';
-import Menus  from './Menus';
+import Menus from './Menus';
 import { menu } from '../../utils/menu';
 
 const drawerWidth = 240;
