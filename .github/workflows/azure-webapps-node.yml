@@ -47,12 +47,7 @@ jobs:
       run: |
         cd frontend
         npm install
-        
-    # Passo de verificação para listar arquivos na pasta específica
-    - name: List menu-side-bar directory
-      run: |
-        cd frontend
-        ls -la src/shared/components/menu-side-bar
+      
 
       # Build do frontend
     - name: Build frontend
