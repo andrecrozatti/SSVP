@@ -50,7 +50,9 @@ jobs:
         
     # Passo de verificação para listar arquivos na pasta específica
     - name: List menu-side-bar directory
-      run: ls -la src/shared/components/menu-side-bar
+      run: |
+        cd frontend
+        ls -la src/shared/components/menu-side-bar
 
       # Build do frontend
     - name: Build frontend
