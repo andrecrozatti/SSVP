@@ -25,13 +25,5 @@ export const DarkTheme = createTheme({
     allVariants: {
       color: '#fff',
     },
-  },
-  custom: {
-    tab: {
-      main: '#263238',
-    },
-    icon: {
-      main: '#263238',
-    },
-  },
+  }
 });

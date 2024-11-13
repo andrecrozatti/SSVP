@@ -9,6 +9,12 @@
     "skipLibCheck": true, // Ignora checagem de tipos nas bibliotecas
     "strict": false, // Desativa a verificação estrita
     "noUnusedLocals": false, // Ignora variáveis locais não usadas
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/shared/components/*"]
+    }
   }
+  
 }

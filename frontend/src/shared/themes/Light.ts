@@ -27,13 +27,5 @@ export const LightTheme = createTheme({
       color: '#333',
     },
     fontWeightRegular: 500
-  },
-  custom: {
-    tab: {
-      main: '#333',
-    },
-    icon: {
-      main: '#014071',
-    },
-  },
+  }
 });
