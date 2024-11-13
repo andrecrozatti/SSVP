@@ -212,13 +212,17 @@ export const AssistidsAddEdit: React.FC = () => {
                 value={field.value}
                 onChange={field.onChange}
               >
-                <TextField
-                  label="CPF"
-                  variant="outlined"
-                  fullWidth
-                  error={!!errors.cpf}
-                  helperText={errors.cpf ? errors.cpf.message : ''}
-                />
+                {(inputProps) =>
+
+                  <TextField
+                    {...inputProps}
+                    label="CPF"
+                    variant="outlined"
+                    fullWidth
+                    error={!!errors.cpf}
+                    helperText={errors.cpf ? errors.cpf.message : ''}
+                  />
+                }
               </InputMask>
             )}
           />
@@ -235,7 +239,10 @@ export const AssistidsAddEdit: React.FC = () => {
                 value={field.value}
                 onChange={field.onChange}
               >
+                {(inputProps) => 
+                
                 <TextField
+                  {...inputProps}
                   variant="standard"
                   label="Celular"
                   type="tel"
@@ -243,7 +250,8 @@ export const AssistidsAddEdit: React.FC = () => {
                   error={!!errors.phone}
                   helperText={errors.phone ? 'Campo obrigatório' : ''}
                   InputLabelProps={{ shrink: true }}
-                />
+                />}
+
               </InputMask>
 
 
