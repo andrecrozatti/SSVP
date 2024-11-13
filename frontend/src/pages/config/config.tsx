@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
+
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useForm } from 'react-hook-form';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -45,19 +44,9 @@ export default function Config() {
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
 
-    const {
-        control,
-        handleSubmit,
-        formState: { errors },
-        reset
-      } = useForm({
-        defaultValues: {
-          
-        },
-      });
-
-
+   
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+        event.preventDefault();
         setValue(newValue);
     };
 

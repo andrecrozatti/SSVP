@@ -3,7 +3,7 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { TextField, Grid, Box, Button, Typography } from '@mui/material';
 import { IConferences } from '../../shared/dtos/IConferences';
 import { createConferences, getOneConferences, deleteConferences, updateConferences } from '../../api/conferences';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import AddressFields from '../../shared/components/form-components/AddressFields';
 import { useSnackbar } from '../../shared/hooks/SnackbarProvider';
@@ -11,8 +11,6 @@ import { useSnackbar } from '../../shared/hooks/SnackbarProvider';
 
 export const ConferencesAddEdit: React.FC = () => {
   const { id } = useParams();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const { showMessage } = useSnackbar()
   const navigate = useNavigate()
 
@@ -41,25 +39,23 @@ export const ConferencesAddEdit: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
-      setError(null);
+     
       try {
         const response = await getOneConferences(Number(id));
         if (response?.data) {
           reset(response.data);
         }
       } catch (err) {
-        setError('Erro ao carregar os dados.');
+       
       } finally {
-        setLoading(false);
+        
       }
     };
 
     if (id) {
       fetchData();
-    } else {
-      setLoading(false); // Se não há id, é um novo registro, não precisa carregar dados
-    }
+    } 
+
   }, [id, reset]);
 
   const handleDelete = async (id: number) => {

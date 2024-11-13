@@ -23,7 +23,6 @@ import { PositionsPage } from '../pages/positions/positionsPage';
 import { PositionAddEdit } from '../pages/positions/positionsAddEdit';
 import { VisitsAddEdit } from '../pages/visits/addVisitsEdit';
 import { VisitsPage } from '../pages/visits/visitsPage';
-import { AssistedsReport } from '../pages/reports/assisteds/AssistedsReport';
 import { AssistedsFilterPage } from '../pages/reports/assisteds/AssistedsFilterPage';
 import Config from '../pages/config/config';
 

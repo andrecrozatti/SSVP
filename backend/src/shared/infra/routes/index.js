@@ -36,6 +36,10 @@ const ensureAuthenticated = require('../../../shared/middlewares/ensure.autentic
 
 const routes = Router();
 
+routes.get('/hello', (req, res) => {
+    res.json({ message: 'Olá do backend!' });
+});
+
 routes.use('/users', usersRoutes);
 
 routes.use('/login', sessionsRoutes);

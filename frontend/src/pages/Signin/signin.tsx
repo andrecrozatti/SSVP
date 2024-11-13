@@ -57,7 +57,7 @@ export const SignIn: React.FC = () => {
       try {
         setLoading(true);
 
-        const result = await signIn({
+        await signIn({
           email: data.email,
           password: data.password,
         });
@@ -143,7 +143,7 @@ export const SignIn: React.FC = () => {
                   {'Esqueceu a senha?'}
                 </Link>
               </Grid>
-              
+
             </Grid>
           </form>
         </Box>

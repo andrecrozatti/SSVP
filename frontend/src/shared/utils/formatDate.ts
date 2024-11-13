@@ -60,8 +60,6 @@ export function StringDateToShow(currentDate: string) : string | null {
     const year = formatedDate.getFullYear();
     const month = pad(formatedDate.getMonth() + 1); // Os meses começam em 0, então adicionamos 1
     const day = pad(formatedDate.getDate());
-    const hours = pad(formatedDate.getHours());
-    const minutes = pad(formatedDate.getMinutes());
 
     // Formata no padrão necessário para o input datetime-local
      return `${day}/${month}/${year}`;

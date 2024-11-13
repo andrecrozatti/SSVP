@@ -17,6 +17,8 @@ interface PositionsSelectProps {
 
 const PositionsSelect: React.FC<PositionsSelectProps> = ({ control, name, positions, error, errorMessage, hasMandate }) => {
 
+
+  console.log(hasMandate)
   return (
     <Controller
       name={name}

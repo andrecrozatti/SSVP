@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const path = require('path');
 
 const { errors } = require('celebrate');
 
@@ -14,6 +15,9 @@ const app = express();
 
 const port = 3333;
 
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+
 const cors = require('cors');
 
 app.use(express.json());
@@ -21,6 +25,9 @@ app.use(express.json());
 app.use(cors({ origin: '*' }));
 
 app.use(routes);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
 app.use(errors()); // Error handling middleware
 

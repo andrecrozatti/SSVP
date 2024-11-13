@@ -79,7 +79,8 @@ export const Users: React.FC = () => {
           response.data.mandateDate = response.data.mandateDate?.split("T")[0]
           reset(response.data);
         }
-      } catch (err) {
+      } catch (err: any) {
+        setError(err.message);
         showMessage('Erro ao carregar os dados.'+ err, {severity: "error"});
       } finally {
 

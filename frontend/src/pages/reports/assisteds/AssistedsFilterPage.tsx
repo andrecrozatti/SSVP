@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import { AssistedsReport } from "./AssistedsReport";
 import { Box, Button, Grid, TextField, MenuItem, Select, FormControl, InputLabel } from "@mui/material";
@@ -31,7 +31,7 @@ export const AssistedsFilterPage: React.FC = () => {
         handleSubmit,
         formState: { errors },
         watch,
-        reset,
+        
         setValue
     } = useForm<IReport>({
         defaultValues: {
@@ -68,6 +68,10 @@ export const AssistedsFilterPage: React.FC = () => {
     });
 
 
+    const handlePrint = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        printFn(); // Chama a função de impressão aqui
+      };
 
     const onSubmit: SubmitHandler<IReport> = async data => {
         try {
@@ -174,7 +178,7 @@ export const AssistedsFilterPage: React.FC = () => {
                 <Grid item xs={2}>
                     <Button
                         variant="outlined"
-                        onClick={printFn}
+                        onClick={handlePrint}
                         startIcon={<PrintIcon />}
                     >
                         Print

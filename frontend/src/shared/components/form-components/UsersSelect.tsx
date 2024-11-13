@@ -14,13 +14,12 @@ interface UsersSelectProps {
   users: IUser[]; // A lista de assistidos que será exibida no select
   error?: boolean;       // Se existe erro no campo
   errorMessage?: string;
-  hasMandate?: Function; // Caso o cargo tenha mandato ou não
 }
 
-const UsersSelect: React.FC<UsersSelectProps> = ({ control, name, users, error, errorMessage, hasMandate }) => {
+const UsersSelect: React.FC<UsersSelectProps> = ({ control, name, users, error, errorMessage }) => {
 
   const { user } = useAuth();
-  
+
   const defaultUser = user.id || "";
 
   return (
@@ -37,9 +36,9 @@ const UsersSelect: React.FC<UsersSelectProps> = ({ control, name, users, error, 
             {...field}
             //value={field.value || ""}  // Garantindo que o valor inicial seja uma string vazia se não houver valor
             label="Usuários"
-          
+
           >
-            {users.map((item, index) => (
+            {users.map((item) => (
               <MenuItem key={item.id} value={Number(item.id)}>
                 {item.name}
               </MenuItem>
@@ -48,7 +47,7 @@ const UsersSelect: React.FC<UsersSelectProps> = ({ control, name, users, error, 
           <FormHelperText>{errorMessage}</FormHelperText>
         </FormControl>
       )}
-      
+
     />
   );
 };
