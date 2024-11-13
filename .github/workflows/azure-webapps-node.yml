@@ -68,7 +68,14 @@ jobs:
         cd backend
         npm install
 
-
+      # Empacotar o build como um artefato
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ssvp  # Nome do artefato a ser criado
+        path: |
+          frontend/dist    # Inclui o build do frontend
+          backend           # Inclui o backend completo
 
 
   deploy:
@@ -84,7 +91,7 @@ jobs:
     - name: Download artifact from build job
       uses: actions/download-artifact@v3
       with:
-        name: node-app
+        name: ssvp
 
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp
